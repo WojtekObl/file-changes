@@ -19,14 +19,15 @@ export function sortChangedFiles(files: GitHubFile[]): ChangedFiles {
       added: [],
       removed: [],
       renamed: [],
-      modified: []
+      modified: [],
+      previous_filename: []
     } as ChangedFiles
     files.forEach(f => {
       changedFiles[f.status].push(
-        f.filename || f.added || f.removed || f.renamed || f.modified
+        f.filename || f.added || f.removed || f.renamed || f.modified || f.previous_filename
       )
       changedFiles.files.push(
-        f.filename || f.added || f.removed || f.modified || f.renamed
+        f.filename || f.added || f.removed || f.modified || f.renamed || f.previous_filename
       )
     })
     return changedFiles
